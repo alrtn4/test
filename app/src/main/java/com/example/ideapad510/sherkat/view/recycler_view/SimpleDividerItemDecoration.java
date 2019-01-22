@@ -9,10 +9,6 @@ import android.view.View;
 
 import com.example.ideapad510.sherkat.R;
 
-/**
- * Created by Ideapad 510 on 1/17/2019.
- */
-
 public class SimpleDividerItemDecoration extends RecyclerView.ItemDecoration {
     private Drawable mDivider;
 

@@ -14,32 +14,28 @@ import com.example.ideapad510.sherkat.model.DatabaseHelper;
 import com.example.ideapad510.sherkat.view.recycler_view.MyAdapter;
 import com.example.ideapad510.sherkat.view.recycler_view.SimpleDividerItemDecoration;
 
-
 public class MainActivity extends AppCompatActivity {
-    private MyAdapter listAdapter;
     private RecyclerView recycler;
-    LinearLayoutManager layoutManager;
-    DatabaseHelper db;
+    private LinearLayoutManager layoutManager;
+    private DatabaseHelper db;
+    private TextView txt1;
+    private TextView txt2;
+    private TextView txt3;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         preparingViews();
-        TextView txt1 = findViewById(R.id.textView1);
-        TextView txt2 = findViewById(R.id.textView2);
-        TextView txt3 = findViewById(R.id.textView3);
 
         //joinning database with recyclerview
         db = new DatabaseHelper(this);
-        listAdapter = new MyAdapter(db.convertRowsToSimpleRows(), this);
+        MyAdapter listAdapter = new MyAdapter(db.convertRowsToSimpleRows(), this);
         recycler.setAdapter(listAdapter);
 
         //some setting value for example
-        txt1.setText("111");
-        txt2.setText("22");
-        txt3.setText("3");
-//        db.insertRow("hi", "bye","hello","how","it");
+        setTopTextViews("333","22","1");
+//        addRecyclerRow("hi", "bye","hello","how","it");
     }
 
     @Override
@@ -48,13 +44,13 @@ public class MainActivity extends AppCompatActivity {
         return true;
     }
 
-
+    //the action done by floating button
     public void goToEndOfListOfRecyclerView(View view) {
-        layoutManager.scrollToPosition(db.getRowsCount() - 1);
+        layoutManager.scrollToPosition(db.getRowsCount() -1);
     }
 
-
-    public void preparingViews(){
+    //All views prepare here
+    private void preparingViews(){
         setContentView(R.layout.activity_main);
         recycler = findViewById(R.id.recycler_layout);
         layoutManager = new LinearLayoutManager(this);
@@ -65,6 +61,20 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         recycler.setVerticalScrollbarPosition(View.SCROLLBAR_POSITION_LEFT);
+        txt1 = findViewById(R.id.textView1);
+        txt2 = findViewById(R.id.textView2);
+        txt3 = findViewById(R.id.textView3);
+    }
+
+    //setting the value of three top text boxes
+    private void setTopTextViews(String s1, String s2, String s3){
+        txt1.setText(s1);
+        txt2.setText(s2);
+        txt3.setText(s3);
+    }
+
+    private void addRecyclerRow(String txtBox1, String txtBox2, String txtBox3, String txtBox4, String txtBox5){
+        db.insertRow(txtBox1, txtBox2, txtBox3, txtBox4, txtBox5);
     }
 
 }
