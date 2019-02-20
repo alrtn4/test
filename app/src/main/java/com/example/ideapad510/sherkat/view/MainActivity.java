@@ -1,5 +1,7 @@
 package com.example.ideapad510.sherkat.view;
 
+
+import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -36,6 +38,7 @@ public class MainActivity extends AppCompatActivity {
         //some setting value for example
         setTopTextViews("333","22","1");
 //        addRecyclerRow("hi", "bye","hello","how","it");
+
     }
 
     @Override
@@ -51,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
 
     //All views prepare here
     private void preparingViews(){
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_main2);
         recycler = findViewById(R.id.recycler_layout);
         layoutManager = new LinearLayoutManager(this);
         recycler.setLayoutManager(layoutManager);
@@ -76,5 +79,12 @@ public class MainActivity extends AppCompatActivity {
     private void addRecyclerRow(String txtBox1, String txtBox2, String txtBox3, String txtBox4, String txtBox5){
         db.insertRow(txtBox1, txtBox2, txtBox3, txtBox4, txtBox5);
     }
+/*
+    private void showEditDialog() {
+        FragmentManager fm = getSupportFragmentManager();
+        infoDialogFragment editNameDialogFragment = infoDialogFragment.newInstance("INFORMATION");
+        editNameDialogFragment.show(fm, "fragment_info_dialog");
+    }
+*/
 
 }

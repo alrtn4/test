@@ -1,29 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:weightSum="100"
+    android:background="@color/lightPink">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:minHeight="?attr/actionBarSize"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:titleTextColor="@android:color/white"
+        android:background="@color/violet">
+    </android.support.v7.widget.Toolbar>
+
 
     <RelativeLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="0dp"
         android:background="@color/lightPink"
         android:fitsSystemWindows="true"
-        tools:context="com.example.ideapad510.sherkat.view.MainActivity">
-
-        <android.support.v7.widget.Toolbar
-            android:id="@+id/toolbar"
-            android:minHeight="?attr/actionBarSize"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:titleTextColor="@android:color/white"
-            android:background="@color/violet">
-        </android.support.v7.widget.Toolbar>
-
+        tools:context="com.example.ideapad510.sherkat.view.MainActivity"
+        android:layout_weight="30">
 
 
 
@@ -35,10 +39,12 @@
             android:layout_marginEnd="15dp"
             android:layout_toStartOf="@+id/textView2"
             android:layout_alignTop="@+id/textView2"
+            android:layout_alignBottom="@+id/textView2"
             android:width="90dp"
             android:height="100dp"
             android:textSize="40sp"
             android:gravity="center"
+            android:layout_centerVertical="true"
             android:ellipsize="start"
             android:maxLines="2"/>
 
@@ -48,7 +54,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
-            android:layout_below="@+id/toolbar"
+            android:layout_centerVertical="true"
             android:layout_marginTop="50dp"
             android:height="100dp"
             android:width="90dp"
@@ -62,35 +68,39 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignTop="@+id/textView2"
+            android:layout_alignBottom="@+id/textView2"
             android:layout_toEndOf="@+id/textView2"
             android:layout_marginStart="15dp"
+            android:layout_centerVertical="true"
             android:height="100dp"
             android:width="90dp"
             android:textSize="40sp"
             android:gravity="center"/>
 
+    </RelativeLayout>
 
-        <View
-            android:id="@+id/line"
-            android:layout_width="fill_parent"
-            android:layout_height="2dp"
-            android:layout_alignParentStart="true"
-            android:layout_centerVertical="true"
+    <View
+        android:id="@+id/line"
+        android:layout_width="fill_parent"
+        android:layout_height="2dp"
+        android:layout_alignParentStart="true"
+        android:layout_centerVertical="true"
+        android:background="@color/silver" />
 
-            android:background="@color/silver" />
-
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        android:layout_weight="70">
 
         <android.support.v7.widget.RecyclerView
 
             xmlns:android="http://schemas.android.com/apk/res/android"
             android:id="@+id/recycler_layout"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:minHeight="0dp"
             android:layout_margin="15dp"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentBottom="true"
-            android:layout_below="@+id/line"
             android:layout_marginTop="31dp"
             android:layout_marginBottom="5dp"
             android:clickable="true"
@@ -98,7 +108,8 @@
             android:foreground="?android:attr/selectableItemBackground"
             android:orientation="vertical"
             android:scrollbars="vertical"
-            android:fadeScrollbars="false">
+            android:fadeScrollbars="false"
+            >
 
         </android.support.v7.widget.RecyclerView>
 
@@ -106,17 +117,17 @@
         <android.support.design.widget.FloatingActionButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentEnd="true"
             android:layout_margin="16dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
             android:clickable="true"
             android:focusable="true"
             app:backgroundTint="@color/pink"
             app:fabSize="mini"
             android:src="@drawable/ic_arrow_downward_black_24dp"
-            android:onClick="goToEndOfListOfRecyclerView"/>
+            android:onClick="goToEndOfListOfRecyclerView"
+            />
 
     </RelativeLayout>
-
 
 </LinearLayout>
